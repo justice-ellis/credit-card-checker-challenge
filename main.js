@@ -26,19 +26,19 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 const validateCred = (card) => {
   const cardCopy = [...card];
-  const lastDigit = cardCopy.pop();  //Removes the last elements of array parameter (card)
-  const cardReverse = cardCopy.reverse(); //Reverses the array after last elements removed
+  const lastDigit = cardCopy.pop(); // Removes the last elements of array parameter (card)
+  const cardReverse = cardCopy.reverse(); // Reverses the array after last elements removed
   let sum = 0;
   cardReverse.forEach((currentDigit, index) => {
     if (index % 2 === 0) {
-      currentDigit *= 2;       //Multiply all odd positions by x2
+      currentDigit *= 2;  // Multiply all odd positions by x2
       if (currentDigit > 9) {
         currentDigit -= 9;
       }
     }
     sum += currentDigit;        
   });
-  const total = sum + lastDigit;    //Sum all elements of currentDigit array including last digit
+  const total = sum + lastDigit; // Sum all elements of currentDigit array including last digit
   return total % 10 === 0;          
 };
 
@@ -52,10 +52,10 @@ const findInvalidCards = (cards) => {
 };
 
 // Test function
-console.log(findInvalidCards([valid1, valid2, valid3, valid4, valid5])); // Shouldn't print anything
+console.log(findInvalidCards([valid1, valid2, valid3, valid4, valid5])); // Should not print anything
 console.log(
   findInvalidCards([invalid1, invalid2, invalid3, invalid4, invalid5])
-); // Should print all of the numbers
+); // Print all of the numbers
 console.log(findInvalidCards(batch)); // Test what the mystery numbers are
 
 const idInvalidCardCompanies = invalidCards => {
@@ -90,12 +90,12 @@ const idInvalidCardCompanies = invalidCards => {
         break;
     }
   }
-  return invalidCardCompanies;
+  return invalidCardCompanies; 
 };
 
-console.log(idInvalidCardCompanies([invalid1])); // Should print['visa']
-console.log(idInvalidCardCompanies([invalid2])); // Should print ['mastercard']
-console.log(idInvalidCardCompanies(batch)); // Find out which companies have mailed out invalid cards
+console.log(idInvalidCardCompanies([invalid1])); // prints ['visa']
+console.log(idInvalidCardCompanies([invalid2])); // prints ['mastercard']
+console.log(idInvalidCardCompanies(batch)); // finds companies that have sent invalid cards
 
 
 
